@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AgendAI — Web
 
-## Getting Started
+Painel web do AgendAI desenvolvido em Next.js 15 + TypeScript.
 
-First, run the development server:
+## 🛠️ Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 15** — App Router, SSR
+- **TypeScript** — tipagem estática
+- **Tailwind CSS** — estilização
+- **Keycloak** — autenticação OAuth2 + JWT
+- **Zustand** — gerenciamento de estado
+- **React Hook Form + Zod** — formulários e validação
+- **Axios** — cliente HTTP
+- **Lucide React** — ícones
+- **Radix UI** — componentes acessíveis
+
+## 📁 Estrutura
+```
+src/
+├── app/              # App Router — páginas e layouts
+├── components/       # Componentes reutilizáveis
+├── hooks/            # Custom hooks
+├── lib/              # Configurações (axios, keycloak)
+├── services/         # Chamadas à API
+├── store/            # Estado global (Zustand)
+└── types/            # Tipos TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Rodando localmente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Pré-requisitos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 20+
+- API do AgendAI rodando ([agendai-backend](https://github.com/rafaelaldolizarbe/agendai-backend))
+- Keycloak rodando ([agendai-infra](https://github.com/rafaelaldolizarbe/agendai-infra))
 
-## Learn More
+### 1. Instala as dependências
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Configura as variáveis de ambiente
+```bash
+cp .env.example .env.local
+# edite o .env.local com suas configurações
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Roda em desenvolvimento
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Acesse em `http://localhost:3000`
 
-## Deploy on Vercel
+## 🔐 Autenticação
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O painel usa Keycloak com OAuth2. As roles disponíveis são:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Role | Acesso |
+|---|---|
+| `owner` | Painel completo |
+| `hairdresser` | Agenda e comissões próprias |
+| `client` | Agendamento online |
+
+## 🔗 Repositórios relacionados
+
+| Repo | Descrição |
+|---|---|
+| [agendai-backend](https://github.com/rafaelaldolizarbe/agendai-backend) | API .NET 10 |
+| [agendai-infra](https://github.com/rafaelaldolizarbe/agendai-infra) | Docker Compose + NGINX |
+| [agendai-flutter](https://github.com/rafaelaldolizarbe/agendai-flutter) | App mobile |
+
+## 🗺️ Roadmap
+
+- [x] Setup inicial Next.js 15
+- [x] Autenticação Keycloak
+- [ ] Layout e navegação
+- [ ] Página de agenda
+- [ ] Página de profissionais
+- [ ] Página de comissões
+- [ ] Página de clientes
+- [ ] Relatórios
+
+## 📄 Licença
+
+MIT
