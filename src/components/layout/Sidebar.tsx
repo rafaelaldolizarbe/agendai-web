@@ -16,7 +16,7 @@ import { usePathname } from 'next/navigation'
 const menuItems = [
   {
     label: 'Agenda',
-    href: '/dashboard',
+    href: '/dashboard/schedule',
     icon: Calendar,
     roles: ['owner', 'hairdresser'],
   },
