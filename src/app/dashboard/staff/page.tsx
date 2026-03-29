@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { staffService } from '@/services/staff'
 import { StaffMember } from '@/types'
 import { Scissors, Plus, Phone, Percent } from 'lucide-react'
+import Link from 'next/link'
 
 const specialtyColors: Record<string, string> = {
   Cabeleireira: 'bg-purple-50 text-purple-700',
@@ -27,7 +28,6 @@ export default function StaffPage() {
 
   return (
     <div>
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-semibold text-gray-900">Profissionais</h1>
@@ -35,13 +35,15 @@ export default function StaffPage() {
             {staff.length} profissional{staff.length !== 1 ? 'is' : ''} cadastrado{staff.length !== 1 ? 's' : ''}
           </p>
         </div>
-        <button className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors">
+        <Link
+          href="/dashboard/staff/new"
+          className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors"
+        >
           <Plus size={16} />
           Novo profissional
-        </button>
+        </Link>
       </div>
 
-      {/* Lista */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[1, 2, 3].map((i) => (
@@ -68,7 +70,6 @@ export default function StaffPage() {
               key={member.id}
               className="bg-white rounded-xl border border-gray-100 p-6 hover:border-gray-200 transition-colors"
             >
-              {/* Avatar + Nome */}
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 text-lg font-medium">
                   {member.name.charAt(0).toUpperCase()}
@@ -85,7 +86,6 @@ export default function StaffPage() {
                 </div>
               </div>
 
-              {/* Detalhes */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <Phone size={14} />
@@ -97,7 +97,6 @@ export default function StaffPage() {
                 </div>
               </div>
 
-              {/* Status */}
               <div className="mt-4 pt-4 border-t border-gray-50 flex items-center justify-between">
                 <span
                   className={`text-xs px-2.5 py-1 rounded-full font-medium ${

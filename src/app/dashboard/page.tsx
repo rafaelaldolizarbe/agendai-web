@@ -17,6 +17,8 @@ export default function DashboardPage() {
         .list()
         .then(setAppointments)
         .finally(() => setLoading(false))
+    } else {
+      setLoading(false)
     }
   }, [isOwner, isHairdresser])
 
@@ -42,7 +44,6 @@ export default function DashboardPage() {
         {isHairdresser && 'Bem-vindo à sua agenda.'}
       </p>
 
-      {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-xl border border-gray-100 p-6">
           <div className="flex items-center gap-3 mb-3">
@@ -79,7 +80,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Lista de agendamentos de hoje */}
       <div className="bg-white rounded-xl border border-gray-100">
         <div className="p-6 border-b border-gray-100">
           <h2 className="text-base font-medium text-gray-900">Agenda de hoje</h2>
